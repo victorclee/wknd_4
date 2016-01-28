@@ -73,6 +73,12 @@ class WhizBangCalculator
   def hypotenuse(first_number, second_number)
     Math.hypot(first_number, second_number)
   end
+  
+  def exponent(first_number, exponent_number)
+    total = 1
+    exponent_number.times { total = multiply(total,first_number) }
+    total
+  end
 
 end
 
