@@ -4,7 +4,7 @@
 # DRY up all the code below - there shouldn't be a single method duplicated between
 # any two classes.
 
-class SimpleCalculator
+module SimpleCalculator
 
   def add(first_number, second_number)
     first_number + second_number
@@ -24,23 +24,7 @@ class SimpleCalculator
 
 end
 
-class FancyCalculator
-
-  def add(first_number, second_number)
-    first_number + second_number
-  end
-
-  def subtract(first_number, second_number)
-    first_number - second_number
-  end
-
-  def multiply(first_number, second_number)
-    first_number * second_number
-  end
-
-  def divide(first_number, second_number)
-    first_number / second_number
-  end
+module FancyCalculator
 
   def square_root(number)
     Math.sqrt(number)
@@ -48,27 +32,7 @@ class FancyCalculator
 
 end
 
-class WhizBangCalculator
-
-  def add(first_number, second_number)
-    first_number + second_number
-  end
-
-  def subtract(first_number, second_number)
-    first_number - second_number
-  end
-
-  def multiply(first_number, second_number)
-    first_number * second_number
-  end
-
-  def divide(first_number, second_number)
-    first_number / second_number
-  end
-
-  def square_root(number)
-    Math.sqrt(number)
-  end
+module WhizBangCalculator
 
   def hypotenuse(first_number, second_number)
     Math.hypot(first_number, second_number)
@@ -82,5 +46,25 @@ class WhizBangCalculator
 
 end
 
+class Mix
+  include SimpleCalculator
+  include FancyCalculator
+  include WhizBangCalculator
+end
+
 # Copy your driver code from the previous exercise and more below:
 
+a = Mix.new.add(4,5)
+p a
+b = Mix.new.subtract(9,5)
+p b
+c = Mix.new.multiply(3,31)
+p c
+d = Mix.new.divide(64,8)
+p d
+e = Mix.new.square_root(81)
+p e
+f = Mix.new.hypotenuse(2,6)
+p f
+g = Mix.new.exponent(6,2)
+p g
