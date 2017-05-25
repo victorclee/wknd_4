@@ -3,13 +3,17 @@
 # bonus: returns a string of all missing letters as a string. ex: find_missing_letter("ace") would return "bd", write your own test.
 
 def find_missing_letter(range)
-  alphabets = "abcdefghijklmnopqrstuvwxyz"
-  range.split(//).each do |letter|
-    a = alphabets.index(letter)
-    
+  array_1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+  start_index = array_1.index(range[0]) 
 
-    
+  range.split(//).each do |letter|
+    if letter == array_1[start_index]
+      start_index += 1
+    else
+      return array_1[start_index]  
+    end
   end
+    nil
 end
 
 # Driver code - don't touch anything below this line.
